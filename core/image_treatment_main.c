@@ -1,4 +1,5 @@
 #include "delete_color_picture.h"
+#include "preprocessing.h"
 
 
 //Ce fichier va servir de main pour les fonctions de traitements d'images
@@ -44,8 +45,3 @@ int main_preprocessing(char *filepath_image_source, char *filepath_image_res)
     return 0;
 }
 
-//temporaire pour tester la fonction
-int main()
-{
-    return main_preprocessing("core/test_image.png", "test_res.png"); //fichier à transformer, nom du fichier final
-}

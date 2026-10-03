@@ -1,4 +1,7 @@
 #include "test.h"
+#include "delete_color_picture.h"
+#include "preprocessing.h"
+#include "image_treatment_main.h" 
 
 int exit_test(const char *name, int (*test_func)(void))
 {
@@ -29,6 +32,9 @@ int main(void)
     int fail = 0;
     fail += exit_test("test_success_addition", test_addition);
     fail += exit_test("test_failure_division", test_division);
+    
+    //test décoloration image
+    fail += main_preprocessing("core/test_image.png", "test_res.png"); //fichier à transformer, nom du fichier final
     if (fail != 0)
     {
         printf("[%i] test ont échoué\n", fail);

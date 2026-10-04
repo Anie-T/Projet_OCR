@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -std=c99 -pedantic -Werror -Wall -Wextra -Wvla -fsanitize=address,undefined -g -lm
-SRC_C = neural_network.c 
-SRC_O = neural_network.o
+SRC_C = neural_network.c solver.c
+SRC_O = neural_network.o solver.o 
 
 main: ${SRC_O}
 	${CC} $^ main.c -o main ${CFLAGS} 

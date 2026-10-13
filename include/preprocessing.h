@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include "delete_color_picture.h"
+#include "../include/delete_color_picture.h"
 
 
 //certaine struct utilisée ici et fonction évoqué sont définies dans delete_color_picture.h

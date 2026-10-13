@@ -1,7 +1,8 @@
-#include "test.h"
-#include "delete_color_picture.h"
-#include "preprocessing.h"
-#include "image_treatment_main.h" 
+#include "include/delete_color_picture.h"
+#include "include/preprocessing.h"
+#include "include/image_treatment_main.h" 
+#include "include/solver.h"
+#include "include/neural_network.h"
 
 int exit_test(const char *name, int (*test_func)(void))
 {
@@ -72,21 +73,25 @@ int test_solver_words(void)
     return fail != 0;
 }
 
+
+//test décoloration image
+int test_decoloration(void)
+{
+    //fichier à transformer, nom du fichier final
+    return main_preprocessing("core/test_image.png", "test_res.png") ;
+}
+
 int main(void)
 {
     int fail = 0;
     fail += exit_test("test_success_addition", test_addition);
     fail += exit_test("test_failure_division", test_division);
     fail += exit_test("test_solver_words", test_solver_words);
-    
-    //test décoloration image
-    fail += main_preprocessing("core/test_image.png", "test_res.png"); //fichier à transformer, nom du fichier final
+    fail += exit_test("test_decoloration", test_decoloration);
+
     if (fail != 0)
-    {
         printf("[%i] test ont échoué\n", fail);
-    }
     else
-    {
-    }
+        printf("Tous les tests ont réussit") ;
     return 1;
 }

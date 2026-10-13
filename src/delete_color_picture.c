@@ -1,8 +1,8 @@
-#include "delete_color_picture.h"
+#include "../include/delete_color_picture.h"
 
 //librairie image
-#include "stb_image.h"
-#include "stb_image_write.h"
+#include "../include/stb_image.h"
+#include "../include/stb_image_write.h"
 
 struct Image *load_picture(const char *filepath_image)
 {

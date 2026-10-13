@@ -1,5 +1,5 @@
-#include "delete_color_picture.h"
-#include "preprocessing.h"
+#include "../include/delete_color_picture.h"
+#include "../include/preprocessing.h"
 
 
 //Ce fichier va servir de main pour les fonctions de traitements d'images

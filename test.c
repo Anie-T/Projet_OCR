@@ -1,8 +1,8 @@
-#include "include/delete_color_picture.h"
-#include "include/preprocessing.h"
-#include "include/image_treatment_main.h" 
 #include "include/solver.h"
 #include "include/neural_network.h"
+#include "include/images.h"
+#include "include/window.h"
+#include <SDL2/SDL.h>
 
 int exit_test(const char *name, int (*test_func)(void))
 {
@@ -73,12 +73,31 @@ int test_solver_words(void)
     return fail != 0;
 }
 
-
 //test décoloration image
 int test_decoloration(void)
-{
-    //fichier à transformer, nom du fichier final
-    return main_preprocessing("core/test_image.png", "test_res.png") ;
+{    
+    SDL_Window *window ;
+    SDL_Renderer *renderer ;
+
+    init_window(&window, &renderer) ;
+
+    char image_path[] = ".image/test_image.bmp" ;
+    Uint8 seuil = 128 ;
+
+    struct SDL_Surface *origin_image = load_image(image_path);
+    struct SDL_Surface *grayscale_image = convert_grayscale(origin_image);
+    struct SDL_Surface *black_white_image = convert_black_and_white(origin_image, seuil);
+    save_image(grayscale_image, ".image/test_grayscale.png") ;
+    save_image(black_white_image, ".image/test_black_white.png") ;
+    printf("test_decoloration : grayscale_image as .image/test_grayscale.png\n") ;
+    printf("test_decoloration : black_white_image as .image/test_black_white.png\n") ;
+
+    SDL_FreeSurface(origin_image) ;
+    SDL_FreeSurface(grayscale_image) ;
+    SDL_FreeSurface(black_white_image) ;
+
+    terminate(window, renderer) ;
+    return 0 ;
 }
 
 int main(void)
